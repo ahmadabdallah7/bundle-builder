@@ -1,0 +1,10 @@
+{
+  "name": "bundle-builder",
+  "private": true,
+  "scripts": {
+    "client-dependencies": "cd client && npm i",
+    "server-dependencies": "cd server && npm i",
+    "client": "cd client && npm run dev",
+    "server": "cd server && nodemon src/index.ts"
+  }
+}
