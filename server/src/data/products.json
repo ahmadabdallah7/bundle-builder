@@ -1,8 +1,229 @@
 {
   "products": {
-    "cameras": [],
-    "sensors": []
+    "cameras": [
+      {
+        "productId": 1,
+        "isCamera": true,
+        "name": "Wyze Cam v4",
+        "description": "The clearest Wyze Cam ever made.",
+        "originalPrice": 35.98,
+        "currentPrice": 27.98,
+        "badge": "Save 22%",
+        "image": "/images/Wyzev4-white.png",
+        "variants": [
+          {
+            "variantId": "white",
+            "color": "White",
+            "thumbnail": "/images/Wyzev4-white.png",
+            "image": "/images/Wyzev4-white.png"
+          },
+          {
+            "variantId": "grey",
+            "color": "Grey",
+            "thumbnail": "/images/Wyzev4-grey.png",
+            "image": "/images/Wyzev4-grey.png"
+          },
+          {
+            "variantId": "black",
+            "color": "Black",
+            "thumbnail": "/images/Wyzev4-black.png",
+            "image": "/images/Wyzev4-black.png"
+          }
+        ]
+      },
+      {
+        "productId": 2,
+        "isCamera": true,
+        "name": "Wyze Cam Pan v3",
+        "description": "360° pan and 180° tilt security camera.",
+        "originalPrice": 39.98,
+        "currentPrice": 34.98,
+        "badge": "Save 12%",
+        "image": "/images/WyzePanv3-white.png",
+        "variants": [
+          {
+            "variantId": "white",
+            "color": "White",
+            "thumbnail": "WyzePanv3Triple-white.png",
+            "image": "/images/WyzePanv3-white.png"
+          },
+          {
+            "variantId": "black",
+            "color": "Black",
+            "thumbnail": "WyzePanv3Triple-black.png",
+            "image": "/images/WyzePanv3-black.png"
+          }
+        ]
+      },
+      {
+        "productId": 3,
+        "isCamera": true,
+        "name": "Wyze Cam Floodlight v2",
+        "description": "2K floodlight camera with a 160° wide-angle view for your garage.",
+        "originalPrice": 89.98,
+        "currentPrice": 69.98,
+        "badge": "Save 22%",
+        "image": "/images/WyzeFloodlightv2-white.png",
+        "variants": [
+          {
+            "variantId": "white",
+            "color": "White",
+            "thumbnail": "/images/WyzeFloodlightv2-white.png",
+            "image": "/images/WyzeFloodlightv2-white.png"
+          },
+          {
+            "variantId": "black",
+            "color": "Black",
+            "thumbnail": "/images/WyzeFloodlightv2-black.png",
+            "image": "/images/WyzeFloodlightv2-black.png"
+          }
+        ]
+      },
+      {
+        "productId": 4,
+        "isCamera": true,
+        "name": "Wyze Duo Cam Doorbell",
+        "description": "Two cameras. Two views. Double the porch protection.",
+        "originalPrice": 69.98,
+        "currentPrice": 69.98,
+        "badge": null,
+        "image": "/images/WyzeDoorbell.png",
+        "variants": []
+      },
+      {
+        "productId": 5,
+        "isCamera": true,
+        "name": "Wyze Battery Cam Pro",
+        "description": "Protect anywhere. See everything in 2.5K HDR. No power outlet or electrician needed.",
+        "originalPrice": 89.98,
+        "currentPrice": 89.98,
+        "badge": null,
+        "image": "/images/WyzeBatteryPro-white.png",
+        "variants": [
+          {
+            "variantId": "white",
+            "color": "White",
+            "thumbnail": "/images/WyzeBatteryPro-white.png",
+            "image": "/images/WyzeBatteryPro-white.png"
+          },
+          {
+            "variantId": "black",
+            "color": "Black",
+            "thumbnail": "/images/WyzeBatteryPro-black.png",
+            "image": "/images/WyzeBatteryPro-black.png"
+          }
+        ]
+      }
+    ],
+    "sensors": [
+      {
+        "productId": 1,
+        "name": "Wyze Sense Motion Sensor",
+        "discount": false,
+        "originalPrice": 29.99,
+        "currentPrice": 29.99,
+        "image": "/images/WyzeSenseMotion.png"
+      },
+      {
+        "productId": 2,
+        "name": "Wyze Sense Hub",
+        "discount": true,
+        "required": true,
+        "originalPrice": 29.92,
+        "currentPrice": 0,
+        "image": "/images/WyzeSenseHub.png"
+      }
+    ],
+    "accessories": [
+      {
+        "productId": 1,
+        "name": "Wyze MicroSD Card (256GB)",
+        "originalPrice": 20.98,
+        "currentPrice": 20.98,
+        "image": "/images/WyzeSDCard.png"
+      }
+    ]
   },
-  "plans": [],
-  "initialConfiguration": {}
+  "plans": [
+    {
+      "planId": 1,
+      "name": "Plus",
+      "originalPrice": 4.99,
+      "currentPrice": 2.99,
+      "coverage": "For a single camera.",
+      "image": "/images/WyzeLogo.png"
+    },
+    {
+      "planId": 2,
+      "name": "Unlimited",
+      "originalPrice": 12.99,
+      "currentPrice": 9.99,
+      "coverage": "Covers all your cameras.",
+      "image": "/images/WyzeLogo.png"
+    },
+    {
+      "planId": 3,
+      "name": "Unlimited Pro",
+      "originalPrice": 22.99,
+      "currentPrice": 19.99,
+      "coverage": "Covers all your cameras.",
+      "image": "/images/WyzeLogo.png"
+    }
+  ],
+  "initialConfiguration": {
+    "cameras": [
+      {
+        "productId": 1,
+        "name": "Wyze Cam v4",
+        "variantId": "white",
+        "originalPrice": 35.98,
+        "currentPrice": 27.98,
+        "image": "/images/Wyzev4-white.png",
+        "quantity": 1
+      },
+      {
+        "productId": 2,
+        "name": "Wyze Cam Pan v3",
+        "variantId": "white",
+        "originalPrice": 39.98,
+        "currentPrice": 34.98,
+        "image": "/images/WyzePanv3-white.png",
+        "quantity": 2
+      }
+    ],
+    "sensors": [
+      {
+        "productId": 1,
+        "name": "Wyze Sense Motion Sensor",
+        "discount": false,
+        "originalPrice": 29.99,
+        "currentPrice": 29.99,
+        "image": "/images/WyzeSenseMotion.png",
+        "quantity": 2
+      },
+      {
+        "productId": 2,
+        "name": "Wyze Sense Hub",
+        "discount": true,
+        "required": true,
+        "originalPrice": 29.92,
+        "currentPrice": 0,
+        "image": "/images/WyzeSenseHub.png",
+        "quantity": 1
+      }
+    ],
+    "accessories": {
+      "name": "Wyze MicroSD Card (256GB)",
+      "originalPrice": 20.98,
+      "currentPrice": 20.98,
+      "image": "/images/WyzeSDCard.png",
+      "quantity": 2
+    },
+    "plan": {
+      "name": "Unlimited",
+      "originalPrice": 12.99,
+      "currentPrice": 9.99,
+      "image": "/images/WyzeLogo.png"
+    }
+  }
 }

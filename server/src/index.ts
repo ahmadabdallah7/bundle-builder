@@ -1,6 +1,9 @@
 import express from "express";
 import cors from "cors";
 
+// Data
+import products from "./data/products.json";
+
 // Setup
 const app = express();
 const port = 3000;
@@ -11,6 +14,11 @@ app.use(
     origin: "http://localhost:5173",
   }),
 );
+
+// Data get request
+app.get("/api/products", (req, res) => {
+  res.json(products);
+});
 
 // Backend server
 app.listen(port, () => {
