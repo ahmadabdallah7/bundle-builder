@@ -20,7 +20,7 @@ export default function Price({
       {currentPrice === 0 ? (
         <span className={currentPriceClassName}>FREE</span>
       ) : (
-        <span>${currentPrice}</span>
+        <span className={currentPriceClassName}>${currentPrice}</span>
       )}
     </div>
   );
