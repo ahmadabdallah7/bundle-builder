@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 
 // Data
-import products from "./data/products.json";
+import products from "./data/products.json" with { type: "json" };
 
 // Setup
 const app = express();

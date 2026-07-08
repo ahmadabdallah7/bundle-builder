@@ -12,7 +12,7 @@ type Variant = {
 };
 
 type Product = {
-  productId: number;
+  productId: string;
   name: string;
   description: string;
   originalPrice: number;

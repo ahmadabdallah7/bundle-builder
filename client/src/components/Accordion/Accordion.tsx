@@ -39,11 +39,11 @@ export default function Accordion({
           </div>
 
           <div
-            className={`border-[#737373] border-t py-4 ${isOpen ? "border-b" : ""}`}
+            className={`border-[#737373] border-t py-4 ${isOpen ? "" : "border-b"}`}
           >
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-2">
-                <img src={icon} alt={title} />
+                <img src={icon} alt={title} className="w-6.5 h-6.5" />
                 <h3 className="text-black text-[22px]">{title}</h3>
               </div>
 
