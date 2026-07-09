@@ -9,7 +9,7 @@ type AccordionProps = {
   nextStep?: string;
 
   onToggle: () => void;
-  onNext: () => void;
+  onNext?: () => void;
 
   children: React.ReactNode;
 };
@@ -30,14 +30,17 @@ export default function Accordion({
       id="section"
       className={`rounded-xl overflow-hidden ${isOpen ? "bg-[#EDF4FF]" : "bg-white"}`}
     >
-      <button onClick={onToggle} className="w-full text-left">
-        <div id="header" className="flex flex-col px-5 py-4">
-          <div>
-            <p className="text-[#484848] text-xs uppercase mb-3">
-              STEP {step} OF 4
-            </p>
-          </div>
+      <div id="header" className="flex flex-col px-5 py-4">
+        <div>
+          <p className="text-[#484848] text-xs uppercase mb-3">
+            STEP {step} OF 4
+          </p>
+        </div>
 
+        <button
+          onClick={onToggle}
+          className="w-full text-left hover:cursor-pointer"
+        >
           <div
             className={`border-[#737373] border-t py-4 ${isOpen ? "" : "border-b"}`}
           >
@@ -53,15 +56,15 @@ export default function Accordion({
               </div>
             </div>
           </div>
-        </div>
-      </button>
+        </button>
+      </div>
       {isOpen && (
         <div id="body" className="py-5 px-5">
           {children}
           {nextStep && (
             <div className="flex justify-center mt-8">
               <button
-                className="border border-[#4E2FD2] text-[#4E2FD2] text-lg px-4 py-2"
+                className="border border-[#4E2FD2] text-[#4E2FD2] text-lg px-4 py-2 hover:cursor-pointer"
                 onClick={onNext}
               >
                 Next: {nextStep}

@@ -120,6 +120,7 @@
         "productId": "sensor-1",
         "name": "Wyze Sense Motion Sensor",
         "discount": false,
+        "required": false,
         "originalPrice": 29.99,
         "currentPrice": 29.99,
         "image": "/images/WyzeSenseMotion.png"

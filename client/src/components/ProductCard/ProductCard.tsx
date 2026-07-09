@@ -14,23 +14,25 @@ type Variant = {
 type Product = {
   productId: string;
   name: string;
-  description: string;
+  description?: string;
   originalPrice: number;
   currentPrice: number;
-  discount: boolean | null;
-  badge: string | null;
+  discount?: boolean | null;
+  badge?: string | null;
   image: string;
 
-  variants: Variant[];
+  variants?: Variant[];
 };
 
 type ProductCardProps = {
   product: Product;
 
-  selectedVariantId: string;
+  selectedVariantId?: string;
   quantity: number;
+  isSelected: boolean;
+  image: string;
 
-  onVariantChange: (variantId: string) => void;
+  onVariantChange?: (variantId: string) => void;
   onIncrement: () => void;
   onDecrement: () => void;
 };
@@ -42,9 +44,9 @@ export default function ProductCard({
   onVariantChange,
   onIncrement,
   onDecrement,
+  isSelected,
+  image,
 }: ProductCardProps) {
-  const isSelected = quantity > 0;
-
   return (
     <div
       id="product-card"
@@ -64,7 +66,7 @@ export default function ProductCard({
       )}
       <div id="main-content" className="flex gap-4">
         <div id="image" className="w-24 shrink-0">
-          <img src={product.image} alt={product.name} />
+          <img src={image} alt={product.name} />
         </div>
 
         <div id="others" className="flex flex-1 flex-col">
@@ -74,15 +76,18 @@ export default function ProductCard({
             <span className="text-[#0000EE] underline">Learn more</span>
           </div>
 
-          {product.variants.length > 0 && (
-            <div className="mt-3">
-              <VariantSelector
-                variants={product.variants}
-                selectedVariantId={selectedVariantId}
-                onVariantChange={onVariantChange}
-              />
-            </div>
-          )}
+          {product.variants &&
+            selectedVariantId &&
+            onVariantChange &&
+            product.variants.length > 0 && (
+              <div className="mt-3">
+                <VariantSelector
+                  variants={product.variants}
+                  selectedVariantId={selectedVariantId}
+                  onVariantChange={onVariantChange}
+                />
+              </div>
+            )}
 
           <div
             id="price-quantity"

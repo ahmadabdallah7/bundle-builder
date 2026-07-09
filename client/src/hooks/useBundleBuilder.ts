@@ -2,77 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 // Types
-type Variant = {
-  variantId: string;
-  color: string;
-  thumbnail: string;
-  image: string;
-};
-
-type Camera = {
-  productId: string;
-  name: string;
-  description: string;
-  originalPrice: number;
-  currentPrice: number;
-  discount: boolean | null;
-  badge: string | null;
-  image: string;
-
-  variants: Variant[];
-};
-
-type Sensor = {
-  productId: string;
-  name: string;
-  originalPrice: number;
-  currentPrice: number;
-  discount: boolean | null;
-  image: string;
-};
-
-type Accessory = {
-  productId: string;
-  name: string;
-  originalPrice: number;
-  currentPrice: number;
-  image: string;
-};
-
-type Plan = {
-  planId: string;
-  name: string;
-  originalPrice: number;
-  currentPrice: number;
-  coverage: string;
-  image: string;
-};
-
-type ProductsData = {
-  products: {
-    cameras: Camera[];
-    sensors: Sensor[];
-    accessories: Accessory[];
-  };
-  plans: Plan[];
-  initialConfiguration: {
-    cameras: Camera[];
-    sensors: Sensor[];
-    accessories: {
-      productId: string;
-      name: string;
-      originalPrice: number;
-      currentPrice: number;
-      image: string;
-    };
-    plan: {
-      name: string;
-      originalPrice: number;
-      currentPrice: number;
-      image: string;
-    };
-  };
-};
+import type { ProductsData } from "../types/bundle";
 
 export function useBundleBuilder() {
   const [productsData, setProductsData] = useState<ProductsData | null>(null);

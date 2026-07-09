@@ -3,6 +3,8 @@ import { useBundleBuilder } from "../../hooks/useBundleBuilder";
 // Components
 import Accordion from "../Accordion/Accordion";
 import ProductCard from "../ProductCard/ProductCard";
+import PlanCard from "../PlanCard/PlanCard";
+import ReviewPanel from "../ReviewPanel/ReviewPanel";
 
 export default function BundleBuilder() {
   const {
@@ -48,6 +50,20 @@ export default function BundleBuilder() {
 
   const selectedPlanCount = 1;
 
+  function onIncrement(id: string) {
+    setQuantities((prev) => ({
+      ...prev,
+      [id]: (prev[id] ?? 0) + 1,
+    }));
+  }
+
+  function onDecrement(id: string) {
+    setQuantities((prev) => ({
+      ...prev,
+      [id]: prev[id] - 1,
+    }));
+  }
+
   return (
     <div className="mx-auto max-w-7xl grid lg:grid-cols-[2fr_1fr] gap-10 mt-16">
       <div id="accordions">
@@ -64,19 +80,14 @@ export default function BundleBuilder() {
           {cameras.map((camera) => {
             const selectedVariantId = selectedVariants[camera.productId];
 
-            function onIncrement() {
-              setQuantities((prev) => ({
-                ...prev,
-                [selectedVariantId]: (prev[selectedVariantId] ?? 0) + 1,
-              }));
-            }
+            const isSelected = camera.variants.some(
+              (variant) => (quantities[variant.variantId] ?? 0) > 0,
+            );
 
-            function onDecrement() {
-              setQuantities((prev) => ({
-                ...prev,
-                [selectedVariantId]: prev[selectedVariantId] - 1,
-              }));
-            }
+            const selectedVariant = camera.variants.find(
+              (variant) => variant.variantId === selectedVariantId,
+            );
+            const image = selectedVariant?.image ?? camera.image;
 
             function onVariantChange(newVariantId: string) {
               setSelectedVariants((prev) => ({
@@ -87,16 +98,108 @@ export default function BundleBuilder() {
 
             return (
               <ProductCard
+                key={camera.productId}
                 product={camera}
                 selectedVariantId={selectedVariantId}
                 quantity={quantities[selectedVariantId] ?? 0}
                 onVariantChange={onVariantChange}
-                onIncrement={onIncrement}
-                onDecrement={onDecrement}
+                image={image}
+                onIncrement={() => onIncrement(selectedVariantId)}
+                isSelected={isSelected}
+                onDecrement={() => onDecrement(selectedVariantId)}
               />
             );
           })}
         </Accordion>
+
+        <Accordion
+          step={2}
+          title="Choose your plan"
+          icon="/images/Plan.png"
+          selectedCount={selectedPlanCount}
+          isOpen={openStep === 2}
+          onToggle={() => onToggle(2)}
+          nextStep="Choose your sensors"
+          onNext={onNext}
+        >
+          {plans.map((plan) => (
+            <PlanCard
+              key={plan.planId}
+              plan={plan}
+              isSelected={selectedPlanId === plan.planId}
+              onSelect={() => setSelectedPlanId(plan.planId)}
+            />
+          ))}
+        </Accordion>
+
+        <Accordion
+          step={3}
+          title="Choose your sensors"
+          icon="/images/Sensors.png"
+          selectedCount={selectedSensorCount}
+          isOpen={openStep === 3}
+          onToggle={() => onToggle(3)}
+          nextStep="Choose your accessories"
+          onNext={onNext}
+        >
+          {sensors.map((sensor) => {
+            const image = sensor.image;
+
+            const isSelected = (quantities[sensor.productId] ?? 0) > 0;
+
+            return (
+              <ProductCard
+                key={sensor.productId}
+                product={sensor}
+                quantity={quantities[sensor.productId] ?? 0}
+                image={image}
+                onIncrement={() => onIncrement(sensor.productId)}
+                isSelected={isSelected}
+                onDecrement={() => onDecrement(sensor.productId)}
+              />
+            );
+          })}
+        </Accordion>
+
+        <Accordion
+          step={4}
+          title="Add extra protection"
+          icon="/images/Protection.png"
+          selectedCount={selectedAccessoryCount}
+          isOpen={openStep === 4}
+          onToggle={() => onToggle(4)}
+        >
+          {accessories.map((accessory) => {
+            const image = accessory.image;
+
+            const isSelected = (quantities[accessory.productId] ?? 0) > 0;
+
+            return (
+              <ProductCard
+                key={accessory.productId}
+                product={accessory}
+                quantity={quantities[accessory.productId] ?? 0}
+                image={image}
+                onIncrement={() => onIncrement(accessory.productId)}
+                isSelected={isSelected}
+                onDecrement={() => onDecrement(accessory.productId)}
+              />
+            );
+          })}
+        </Accordion>
+      </div>
+
+      <div id="review-panel">
+        <ReviewPanel
+          cameras={cameras}
+          sensors={sensors}
+          accessories={accessories}
+          plans={plans}
+          quantities={quantities}
+          selectedPlanId={selectedPlanId}
+          onIncrement={onIncrement}
+          onDecrement={onDecrement}
+        />
       </div>
     </div>
   );
