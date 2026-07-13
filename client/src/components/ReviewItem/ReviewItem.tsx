@@ -15,6 +15,8 @@ type ReviewItemProps = {
 
   onIncrement: () => void;
   onDecrement: () => void;
+
+  productId: string;
 };
 
 export default function ReviewItem({
@@ -26,14 +28,16 @@ export default function ReviewItem({
   required = false,
   onIncrement,
   onDecrement,
+  productId,
 }: ReviewItemProps) {
   const totalOriginalPrice =
-    originalPrice !== undefined ? quantity * originalPrice : undefined;
-
-  const totalCurrentPrice = quantity * currentPrice;
+    originalPrice !== undefined
+      ? Number((quantity * originalPrice).toFixed(2))
+      : undefined;
+  const totalCurrentPrice = Number((quantity * currentPrice).toFixed(2));
 
   return (
-    <div className="flex items-center gap-4 py-3">
+    <div className="flex items-center gap-4 pt-1">
       <div className="w-11 h-11 shrink-0 rounded-md bg-white flex items-center justify-center">
         <img
           src={image}
@@ -43,21 +47,30 @@ export default function ReviewItem({
       </div>
 
       <div className="flex-1">
-        <h4 className="text-sm font-medium leading-5">{name}</h4>
-        {required && <span className="text-sm font-medium"> (Required)</span>}
+        <h4 className="text-xs md:text-lg xl:text-sm font-medium leading-4 text-[#0B0D10]">
+          {name}
+          {required && (
+            <span className="text-xs md:text-lg xl:text-sm font-medium leading-4 text-[#0B0D10]">
+              {" "}
+              (Required)
+            </span>
+          )}
+        </h4>
       </div>
 
       <QuantityStepper
         quantity={quantity}
         onIncrement={onIncrement}
         onDecrement={onDecrement}
+        style="bg-white disabled:border-[#CED6DE] disabled:border disabled:bg-[#F1F1F2]"
+        product={productId}
       />
 
       <Price
         originalPrice={totalOriginalPrice}
         currentPrice={totalCurrentPrice}
-        originalPriceClassName="text-xs text-gray-400 line-through text-right"
-        currentPriceClassName="text-lg text-[#4E2FD2] font-semibold text-right"
+        originalPriceClassName="font-semibold text-xs md:text-base xl:text-[14px] leading-4 text-[#6F7882] line-through text-right"
+        currentPriceClassName="font-semibold text-xs md:text-base xl:text-[14px] leading-4 text-[#4E2FD2] font-semibold text-right md:ml-2.5"
       />
     </div>
   );

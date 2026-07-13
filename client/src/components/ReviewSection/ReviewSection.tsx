@@ -12,13 +12,13 @@ export default function ReviewSection({
 }: ReviewSectionProps) {
   return (
     <section className="py-2">
-      <h3 className="mb-3 text-xs font-medium uppercase tracking-wide text-[#9CA3AF]">
+      <h3 className="mb-1.75 text-xs font-normal leading-4 uppercase tracking-wide text-[#9CA3AF]">
         {title}
       </h3>
 
       <div className="space-y-2">{children}</div>
 
-      {showDivider && <div className="mt-4 border-b border-[#D7DDE6]" />}
+      {showDivider && <div className="mt-2.5 border-b border-[#D7DDE6]" />}
     </section>
   );
 }

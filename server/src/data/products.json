@@ -68,13 +68,13 @@
           {
             "variantId": "camera-3-white",
             "color": "White",
-            "thumbnail": "/images/WyzeFloodlightv2-white.png",
+            "thumbnail": "/images/WyzeFloodlightv2-white-small.png",
             "image": "/images/WyzeFloodlightv2-white.png"
           },
           {
             "variantId": "camera-3-black",
             "color": "Black",
-            "thumbnail": "/images/WyzeFloodlightv2-black.png",
+            "thumbnail": "/images/WyzeFloodlightv2-black-small.png",
             "image": "/images/WyzeFloodlightv2-black.png"
           }
         ]
@@ -103,13 +103,13 @@
           {
             "variantId": "camera-5-white",
             "color": "White",
-            "thumbnail": "/images/WyzeBatteryPro-white.png",
+            "thumbnail": "/images/WyzeBatteryPro-white-small.png",
             "image": "/images/WyzeBatteryPro-white.png"
           },
           {
             "variantId": "camera-5-black",
             "color": "Black",
-            "thumbnail": "/images/WyzeBatteryPro-black.png",
+            "thumbnail": "/images/WyzeBatteryPro-black-small.png",
             "image": "/images/WyzeBatteryPro-black.png"
           }
         ]
@@ -119,6 +119,7 @@
       {
         "productId": "sensor-1",
         "name": "Wyze Sense Motion Sensor",
+        "description": "Detects motion. Requires Wyze Sense v2 or Wyze Home Monitoring.",
         "discount": false,
         "required": false,
         "originalPrice": 29.99,
@@ -128,6 +129,7 @@
       {
         "productId": "sensor-2",
         "name": "Wyze Sense Hub",
+        "description": "The brains behind the brawn. It connects each of the monitoring components and sends alerts.",
         "discount": true,
         "required": true,
         "originalPrice": 29.92,
@@ -139,6 +141,7 @@
       {
         "productId": "accessory-1",
         "name": "Wyze MicroSD Card (256GB)",
+        "description": "Unlock continuous recording and time lapses for Wyze Cams with this memory card.",
         "originalPrice": 20.98,
         "currentPrice": 20.98,
         "image": "/images/WyzeSDCard.png"
@@ -167,7 +170,7 @@
       "name": "Unlimited Pro",
       "originalPrice": 22.99,
       "currentPrice": 19.99,
-      "coverage": "Covers all your cameras.",
+      "coverage": "Covers all your cameras.\n24/7 Emergency Dispatch.",
       "image": "/images/WyzeLogo.png"
     }
   ],

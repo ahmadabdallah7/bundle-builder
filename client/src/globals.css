@@ -1,1 +1,12 @@
+@import url("https://gistcdn.githack.com/mfd/09b70eb47474836f25a21660282ce0fd/raw/e06a670afcb2b861ed2ac4a1ef752d062ef6b46b/Gilroy.css");
+
+body {
+  font-family: "Gilroy", sans-serif;
+}
+
 @import "tailwindcss";
+
+/* custom break point for a better responsive design */
+@theme {
+  --breakpoint-vlg: 73.75rem;
+}

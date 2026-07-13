@@ -8,6 +8,7 @@ export type Variant = {
 export type Camera = {
   productId: string;
   name: string;
+  isCamera: boolean;
   description: string;
   originalPrice: number;
   currentPrice: number;

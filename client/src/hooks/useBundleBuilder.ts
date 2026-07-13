@@ -7,56 +7,77 @@ import type { ProductsData } from "../types/bundle";
 export function useBundleBuilder() {
   const [productsData, setProductsData] = useState<ProductsData | null>(null);
 
+  // For the accordions
   const [openStep, setOpenStep] = useState<number | null>(1);
 
+  // Variants
   const [selectedVariants, setSelectedVariants] = useState<
     Record<string, string>
   >({});
 
+  // Quantities
   const [quantities, setQuantities] = useState<Record<string, number>>({});
 
+  // Selected plan
   const [selectedPlanId, setSelectedPlanId] = useState<string>("");
 
+  // Bundle population
   useEffect(() => {
     async function fetchProducts() {
       const response = await axios.get("http://localhost:3000/api/products");
       setProductsData(response.data);
 
-      // Variants
-      const initialVariants: Record<string, string> = {};
+      // Retrieving data from localStorage
+      const savedBundle = localStorage.getItem("bundle-builder");
 
-      response.data.products.cameras.forEach(
-        (camera: { productId: string; variants: { variantId: string }[] }) => {
-          if (camera.variants.length > 0) {
-            initialVariants[camera.productId] = camera.variants[0].variantId;
-          }
-        },
-      );
-      setSelectedVariants(initialVariants);
+      if (savedBundle) {
+        const parsedBundle = JSON.parse(savedBundle);
 
-      // Quantities
-      const initialQuantities: Record<string, number> = {};
+        setSelectedVariants(parsedBundle.selectedVariants);
 
-      response.data.initialConfiguration.cameras.forEach(
-        (camera: { variantId: string; quantity: number }) => {
-          initialQuantities[camera.variantId] = camera.quantity;
-        },
-      );
+        setQuantities(parsedBundle.quantities);
 
-      response.data.initialConfiguration.sensors.forEach(
-        (sensor: { productId: string; quantity: number }) => {
-          initialQuantities[sensor.productId] = sensor.quantity;
-        },
-      );
+        setSelectedPlanId(parsedBundle.selectedPlanId);
+      } else {
+        // Variants
+        const initialVariants: Record<string, string> = {};
 
-      initialQuantities[
-        response.data.initialConfiguration.accessories.productId
-      ] = response.data.initialConfiguration.accessories.quantity;
+        response.data.products.cameras.forEach(
+          (camera: {
+            productId: string;
+            variants: { variantId: string }[];
+          }) => {
+            if (camera.variants.length > 0) {
+              initialVariants[camera.productId] = camera.variants[0].variantId;
+            }
+          },
+        );
+        setSelectedVariants(initialVariants);
 
-      setQuantities(initialQuantities);
+        // Quantities
+        const initialQuantities: Record<string, number> = {};
 
-      // Plan
-      setSelectedPlanId("plan-2");
+        response.data.initialConfiguration.cameras.forEach(
+          (camera: { variantId: string; quantity: number }) => {
+            initialQuantities[camera.variantId] = camera.quantity;
+          },
+        );
+
+        response.data.initialConfiguration.sensors.forEach(
+          (sensor: { productId: string; quantity: number }) => {
+            initialQuantities[sensor.productId] = sensor.quantity;
+          },
+        );
+
+        initialQuantities[
+          response.data.initialConfiguration.accessories.productId
+        ] = response.data.initialConfiguration.accessories.quantity;
+
+        setQuantities(initialQuantities);
+
+        // Plan
+        setSelectedPlanId("plan-2");
+      }
     }
     fetchProducts();
   }, []);

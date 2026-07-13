@@ -16,24 +16,26 @@ export default function ShippingReviewItem({
   currentPrice,
 }: ShippingReviewItemProps) {
   return (
-    <div className="flex items-center justify-between gap-4 py-3">
+    <div className="flex items-center justify-between gap-4 pt-2">
       <div className="flex items-center gap-4">
-        <div className="w-11 h-11 shrink-0 rounded-md bg-white flex items-center justify-center">
+        <div className="w-10.25 h-10.25 shrink-0 rounded-md bg-white flex items-center justify-center">
           <img
             src={image}
             alt={title}
-            className="max-h-9 max-w-9 object-contain"
+            className="max-h-7.25 max-w-7.25 object-contain"
           />
         </div>
 
-        <h4 className="text-sm font-medium">{title}</h4>
+        <h4 className="text-sm font-medium leading-4 text-[#0B0D10]">
+          {title}
+        </h4>
       </div>
 
       <Price
         originalPrice={originalPrice}
         currentPrice={currentPrice}
-        originalPriceClassName="text-xs text-gray-400 line-through text-right"
-        currentPriceClassName="text-lg text-[#4E2FD2] font-semibold text-right"
+        originalPriceClassName="font-semibold text-xs sm:text-base xl:text-[14px] leading-4 text-[#6F7882] line-through text-right"
+        currentPriceClassName="font-semibold text-xs sm:text-base xl:text-[14px] leading-4 text-[#4E2FD2] font-semibold text-right md:ml-2.5"
       />
     </div>
   );

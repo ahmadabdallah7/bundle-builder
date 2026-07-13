@@ -23,21 +23,32 @@ export default function VariantSelector({
         const isSelected = variant.variantId === selectedVariantId;
         return (
           <button
-            className={
-              isSelected
-                ? "border rounded-lg border-[#0AA288]"
-                : "border rounded-lg border-[#CCCCCC]"
-            }
+            key={variant.variantId}
+            className={`h-6.5 w-16.25 rounded-xs py-px px-0.75 flex items-center justify-center hover:cursor-pointer
+              ${
+                isSelected
+                  ? "border border-[#0AA288]"
+                  : "border border-[#CCCCCC]"
+              }
+            `}
             onClick={() => {
               onVariantChange(variant.variantId);
             }}
           >
-            <img
-              className="w-7 h-7 mr-0.5"
-              src={variant.thumbnail}
-              alt={variant.color}
-            />
-            {variant.color}
+            <div className="flex items-center">
+              <div>
+                <img
+                  className="w-7 h-7 shrink-0 mr-0.5"
+                  src={variant.thumbnail}
+                  alt={variant.color}
+                />
+              </div>
+              <div>
+                <h5 className="font-medium text-[10px] leading-[100%]">
+                  {variant.color}
+                </h5>
+              </div>
+            </div>
           </button>
         );
       })}
