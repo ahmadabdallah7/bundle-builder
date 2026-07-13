@@ -128,7 +128,10 @@ http://localhost:3000
 ## Screenshots
 
 ### Desktop
+<img width="1438" height="944" alt="image" src="https://github.com/user-attachments/assets/9682b129-c569-4141-9356-24650fc99870" />
 
 ### Tablet
+<img width="1262" height="942" alt="image" src="https://github.com/user-attachments/assets/d60b5c4b-3fc1-4b09-9eaf-54b19f273dd8" />
 
 ### Mobile
+<img width="367" height="845" alt="image" src="https://github.com/user-attachments/assets/5b180690-b5a0-4ea1-9bef-cca93607f36b" />
